@@ -24,20 +24,58 @@ class HomePage extends StatefulWidget{
   }
 }
 class HomePageView extends State<HomePage> {
+  var count=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum App'),
-        centerTitle: true,
+        title: Text('Counter App'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(40),
+      body:Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
+            Text('Count:\n$count'),
+            SizedBox(height: 10,),
+            ElevatedButton(onPressed: (){
+                setState(() {
+                  count+=1;
+                });
+                if(count==5){
+                  showDialog(context: context,
+                      builder: (context){
+                        return AlertDialog(
+                          title: Text("Button pressed 5 times"),
+                          actions: [
+                            TextButton(onPressed: (){}, child: Text('Close')),
+                          ],
+                        );
+                      }
+                  );
+                }
+            }, child: Text('+')),
+            SizedBox(height: 10,),
+            ElevatedButton(onPressed: (){
+              setState(() {
+                count-=1;
+              });
+              if(count==5){
+                showDialog(context: context,
+                    builder: (context){
+                      return AlertDialog(
+                        title: Text("Button pressed 5 times"),
+                        actions: [
+                          TextButton(onPressed: (){}, child: Text('Close')),
+                        ],
+                      );
+                    }
+                );
+              }
+
+            }, child: Text('-')),
+
           ],
+
         ),
       ),
     );

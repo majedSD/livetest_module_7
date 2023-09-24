@@ -35,7 +35,8 @@ class HomePageView extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Count:\n$count'),
+            Text('Count:',style: TextStyle(fontSize: 20),),
+            Text('$count',style: TextStyle(fontSize: 20),),
             SizedBox(height: 10,),
             ElevatedButton(onPressed: (){
                 setState(() {
@@ -45,7 +46,7 @@ class HomePageView extends State<HomePage> {
                   showDialog(context: context,
                       builder: (context){
                         return AlertDialog(
-                          title: Text("Button pressed 5 times"),
+                          title: Text("Button Pressed 5 times"),
                           actions: [
                             TextButton(onPressed: (){}, child: Text('Close')),
                           ],
